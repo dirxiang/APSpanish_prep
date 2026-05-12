@@ -260,6 +260,108 @@
   .card.mine .card-title { color: #2e1a58; }
   .placeholder-note { font-size: 0.64rem; color: #9980cc; font-style: italic; }
 
+  /* SCRIPT CARDS */
+  .tag-script-card { background: #fde8cc; color: #5c2e0a; }
+
+  .card.script-card {
+    border: 1px solid #f0c080;
+    background: #fffaf2;
+    cursor: pointer;
+  }
+  .card.script-card:hover {
+    border-color: var(--spain-gold);
+    box-shadow: 0 4px 18px var(--shadow);
+    transform: translateY(-2px);
+  }
+  .script-preview {
+    font-size: 0.68rem;
+    color: var(--muted);
+    font-style: italic;
+    line-height: 1.5;
+    margin-top: 2px;
+    border-top: 1px solid var(--border);
+    padding-top: 6px;
+  }
+
+  /* MODAL */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(26,16,8,0.55);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: var(--cream);
+    border-radius: 6px;
+    max-width: 680px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.3);
+    animation: modalIn 0.2s ease;
+  }
+  @keyframes modalIn { from { opacity:0; transform: scale(0.96) translateY(8px); } to { opacity:1; transform: none; } }
+  .modal-header {
+    background: var(--spain-red);
+    color: #fff;
+    padding: 18px 24px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
+  .modal-header h2 { font-family: 'Playfair Display', serif; font-size: 1.1rem; line-height: 1.3; }
+  .modal-header p { font-size: 0.68rem; opacity: 0.75; margin-top: 3px; letter-spacing: 0.05em; text-transform: uppercase; }
+  .modal-close {
+    background: rgba(255,255,255,0.15);
+    border: none;
+    color: #fff;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border-radius: 3px;
+    padding: 4px 9px;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+  .modal-close:hover { background: rgba(255,255,255,0.3); }
+  .modal-body { padding: 24px; }
+  .modal-body p {
+    font-family: 'Lora', serif;
+    font-size: 0.88rem;
+    line-height: 1.8;
+    margin-bottom: 14px;
+    color: var(--ink);
+  }
+  .modal-body p:last-child { margin-bottom: 0; }
+  .modal-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 18px 0;
+  }
+  .modal-meta-title {
+    font-size: 0.67rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.75rem; margin-bottom: 16px; }
+  .vocab-table th { background: var(--paper); padding: 6px 10px; text-align: left; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); border-bottom: 1px solid var(--border); }
+  .vocab-table td { padding: 6px 10px; border-bottom: 1px solid var(--border); }
+  .vocab-table tr:last-child td { border-bottom: none; }
+  .timing-table { width: 100%; border-collapse: collapse; font-size: 0.75rem; }
+  .timing-table th { background: var(--paper); padding: 6px 10px; text-align: left; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); border-bottom: 1px solid var(--border); }
+  .timing-table td { padding: 6px 10px; border-bottom: 1px solid var(--border); }
+  .timing-table tr:last-child td { border-bottom: none; }
+
   footer {
     border-top: 1px solid var(--border);
     padding: 16px 40px;
@@ -303,6 +405,7 @@
   <span class="tag tag-scoring">📊 Scoring</span>
   <span class="tag tag-audio">🔊 Audio</span>
   <span class="tag tag-scripts">📜 Scripts</span>
+  <span class="tag tag-script-card">📝 Sample Script</span>
   <span class="tag tag-pdf">📄 PDF</span>
   <span class="tag tag-mine">💜 My Files</span>
 </div>
@@ -649,7 +752,228 @@
     </div>
   </div>
 
+
+  <!-- ═══════════════════════════════════
+       SECTION 6 — SAMPLE SCRIPTS (Score 5)
+  ═══════════════════════════════════ -->
+  <div class="theme-section" id="sec-scripts">
+    <div class="theme-title">Sample Scripts — Score 5 <span class="es">Guiones modelo</span></div>
+    <div class="theme-subtitle">Task 4 · Cultural comparison · easy vocabulary · 2-minute spoken presentation · click any card to read</div>
+
+    <div class="resource-grid">
+
+      <!-- Script 1: La Familia -->
+      <div class="card script-card" onclick="openModal('modal-familia')">
+        <div class="card-top"><span class="card-icon">🏠</span><span class="card-title">La Familia — Familismo vs. Individualismo</span></div>
+        <div class="card-meta"><span class="tag tag-script-card">📝 Script</span><span class="tag tag-speaking">🗣 Speaking</span></div>
+        <div class="script-preview">"En los países hispanohablantes, la familia es muy importante. No solo los padres y los hijos, sino también los abuelos…"</div>
+      </div>
+
+      <!-- Script 2: Las Fiestas -->
+      <div class="card script-card" onclick="openModal('modal-fiestas')">
+        <div class="card-top"><span class="card-icon">🎉</span><span class="card-title">Las Fiestas — Día de los Muertos vs. Halloween</span></div>
+        <div class="card-meta"><span class="tag tag-script-card">📝 Script</span><span class="tag tag-speaking">🗣 Speaking</span></div>
+        <div class="script-preview">"En los países hispanohablantes, las fiestas son muy importantes. No son solo días de descanso, sino momentos para reunir a la familia…"</div>
+      </div>
+
+      <!-- Script 3: El Medio Ambiente -->
+      <div class="card script-card" onclick="openModal('modal-ambiente')">
+        <div class="card-top"><span class="card-icon">🌍</span><span class="card-title">El Medio Ambiente — Latinoamérica vs. EE.UU.</span></div>
+        <div class="card-meta"><span class="tag tag-script-card">📝 Script</span><span class="tag tag-speaking">🗣 Speaking</span></div>
+        <div class="script-preview">"El medio ambiente es un tema muy importante hoy en día. El cambio climático, la contaminación del aire y la basura son problemas serios…"</div>
+      </div>
+
+      <!-- Script 4: La Tecnología -->
+      <div class="card script-card" onclick="openModal('modal-tecnologia')">
+        <div class="card-top"><span class="card-icon">💻</span><span class="card-title">La Tecnología — WhatsApp vs. Redes Sociales en EE.UU.</span></div>
+        <div class="card-meta"><span class="tag tag-script-card">📝 Script</span><span class="tag tag-speaking">🗣 Speaking</span></div>
+        <div class="script-preview">"La tecnología es una parte muy importante de la vida moderna. Los teléfonos inteligentes y las redes sociales han cambiado la manera…"</div>
+      </div>
+
+    </div>
+  </div>
+
 </main>
+
+<!-- ═══════════ MODALS ═══════════ -->
+
+<!-- MODAL: La Familia -->
+<div class="modal-overlay" id="modal-familia" onclick="closeOnOverlay(event, 'modal-familia')">
+  <div class="modal">
+    <div class="modal-header">
+      <div>
+        <h2>🏠 La Familia — Familismo vs. Individualismo</h2>
+        <p>Task 4 · Cultural Comparison · Score 5 · ~2 min</p>
+      </div>
+      <button class="modal-close" onclick="closeModal('modal-familia')">✕</button>
+    </div>
+    <div class="modal-body">
+      <p>Buenos días. Hoy quiero hablar sobre la importancia de la familia en la cultura hispanohablante y cómo se compara con la cultura estadounidense.</p>
+      <p>En los países hispanohablantes, la familia es muy importante. No solo los padres y los hijos, sino también los abuelos, los tíos y los primos viven cerca o incluso en la misma casa. Esto se llama "familismo". La familia se reúne frecuentemente para comer juntos, celebrar fiestas y ayudarse en momentos difíciles. Por ejemplo, cuando una persona mayor necesita ayuda, generalmente la cuida su propia familia en casa, no en un asilo.</p>
+      <p>En la cultura hispanohablante, los hijos jóvenes también suelen vivir con sus padres hasta que se casan. Esto no es una señal de dependencia, sino de unión familiar. Los abuelos ayudan a cuidar a los nietos, y los padres ayudan a los hijos con dinero o trabajo. La familia es como una red de apoyo muy fuerte.</p>
+      <p>En cambio, en los Estados Unidos, la cultura es más individualista. Los jóvenes generalmente se van de casa a los dieciocho años para ir a la universidad o trabajar solos. Muchas personas mayores viven en asilos o comunidades para adultos mayores. Esto no significa que las familias americanas no se quieran, sino que la independencia personal es un valor muy importante en esta cultura.</p>
+      <p>En mi opinión, los dos sistemas tienen ventajas. El modelo hispano ofrece más apoyo emocional y económico, pero el modelo americano fomenta la independencia y la responsabilidad personal. Creo que lo ideal sería combinar los dos: mantener lazos familiares fuertes y también respetar la independencia de cada persona.</p>
+      <p>En conclusión, aunque las dos culturas valoran a la familia, la manera de expresar ese amor es diferente. Estas diferencias reflejan los valores más profundos de cada sociedad.</p>
+      <p><em>Muchas gracias.</em></p>
+      <hr class="modal-divider">
+      <div class="modal-meta-title">🔤 Key Vocabulary</div>
+      <table class="vocab-table">
+        <tr><th>Español</th><th>English</th></tr>
+        <tr><td>familismo</td><td>strong family ties</td></tr>
+        <tr><td>asilo</td><td>nursing home</td></tr>
+        <tr><td>red de apoyo</td><td>support network</td></tr>
+        <tr><td>individualista</td><td>individualistic</td></tr>
+        <tr><td>fomenta</td><td>promotes / encourages</td></tr>
+        <tr><td>lazos familiares</td><td>family bonds</td></tr>
+      </table>
+      <hr class="modal-divider">
+      <div class="modal-meta-title">⏱ Timing Guide</div>
+      <table class="timing-table">
+        <tr><th>Section</th><th>Time</th></tr>
+        <tr><td>Intro</td><td>~15 sec</td></tr>
+        <tr><td>Family in Hispanic culture</td><td>~35 sec</td></tr>
+        <tr><td>Living arrangements</td><td>~25 sec</td></tr>
+        <tr><td>US comparison</td><td>~25 sec</td></tr>
+        <tr><td>Opinion + conclusion</td><td>~20 sec</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Las Fiestas -->
+<div class="modal-overlay" id="modal-fiestas" onclick="closeOnOverlay(event, 'modal-fiestas')">
+  <div class="modal">
+    <div class="modal-header">
+      <div>
+        <h2>🎉 Las Fiestas — Día de los Muertos vs. Halloween</h2>
+        <p>Task 4 · Cultural Comparison · Score 5 · ~2 min</p>
+      </div>
+      <button class="modal-close" onclick="closeModal('modal-fiestas')">✕</button>
+    </div>
+    <div class="modal-body">
+      <p>Buenos días. Hoy quiero hablar sobre las fiestas y tradiciones en la cultura hispanohablante y cómo se comparan con las tradiciones en los Estados Unidos.</p>
+      <p>En los países hispanohablantes, las fiestas son muy importantes. No son solo días de descanso, sino momentos para reunir a la familia y a la comunidad. Muchas fiestas tienen un origen religioso, como la Navidad, la Semana Santa y el Día de los Muertos. Estas celebraciones duran varios días e incluyen comida especial, música, baile y decoraciones coloridas.</p>
+      <p>Por ejemplo, el Día de los Muertos se celebra el primero y dos de noviembre en México y otros países latinoamericanos. Las familias construyen altares con fotos, flores y comida favorita de sus familiares muertos. No es una fiesta triste, sino una forma de recordar y honrar a las personas que ya no están. Es una mezcla de tradiciones indígenas y católicas, y representa la conexión entre la vida y la muerte.</p>
+      <p>En los Estados Unidos, también hay fiestas importantes, como el Día de Acción de Gracias y Halloween. Halloween se celebra el treinta y uno de octubre y es muy popular entre los niños, que se disfrazan y piden dulces. Aunque Halloween y el Día de los Muertos son en fechas similares, son muy diferentes. Halloween es más comercial y de entretenimiento, mientras que el Día de los Muertos es una celebración cultural y espiritual.</p>
+      <p>En mi opinión, las fiestas hispanohablantes tienen un sentido comunitario y espiritual más profundo. Me parece importante que las tradiciones culturales se mantengan vivas, porque nos conectan con nuestra historia e identidad.</p>
+      <p>En conclusión, aunque las dos culturas celebran fiestas en fechas parecidas, el significado y la manera de celebrar son muy distintos. Cada tradición refleja los valores y la historia de su pueblo.</p>
+      <p><em>Muchas gracias.</em></p>
+      <hr class="modal-divider">
+      <div class="modal-meta-title">🔤 Key Vocabulary</div>
+      <table class="vocab-table">
+        <tr><th>Español</th><th>English</th></tr>
+        <tr><td>Semana Santa</td><td>Holy Week</td></tr>
+        <tr><td>altares</td><td>altars / ofrendas</td></tr>
+        <tr><td>honrar</td><td>to honor</td></tr>
+        <tr><td>indígenas</td><td>indigenous</td></tr>
+        <tr><td>disfrazarse</td><td>to dress in costume</td></tr>
+        <tr><td>comunitario</td><td>community-based</td></tr>
+        <tr><td>espiritual</td><td>spiritual</td></tr>
+      </table>
+      <hr class="modal-divider">
+      <div class="modal-meta-title">⏱ Timing Guide</div>
+      <table class="timing-table">
+        <tr><th>Section</th><th>Time</th></tr>
+        <tr><td>Intro</td><td>~15 sec</td></tr>
+        <tr><td>Fiestas in Hispanic culture</td><td>~30 sec</td></tr>
+        <tr><td>Día de los Muertos explained</td><td>~30 sec</td></tr>
+        <tr><td>US comparison (Halloween)</td><td>~25 sec</td></tr>
+        <tr><td>Opinion + conclusion</td><td>~20 sec</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: El Medio Ambiente -->
+<div class="modal-overlay" id="modal-ambiente" onclick="closeOnOverlay(event, 'modal-ambiente')">
+  <div class="modal">
+    <div class="modal-header">
+      <div>
+        <h2>🌍 El Medio Ambiente — Latinoamérica vs. EE.UU.</h2>
+        <p>Task 4 · Cultural Comparison · Score 5 · ~2 min</p>
+      </div>
+      <button class="modal-close" onclick="closeModal('modal-ambiente')">✕</button>
+    </div>
+    <div class="modal-body">
+      <p>Buenos días. Hoy quiero hablar sobre el medio ambiente y cómo las personas en los países hispanohablantes y en los Estados Unidos responden a este problema.</p>
+      <p>El medio ambiente es un tema muy importante hoy en día. El cambio climático, la contaminación del aire y la basura son problemas serios en todo el mundo. Sin embargo, la manera en que cada cultura responde a estos problemas puede ser muy diferente.</p>
+      <p>En muchos países hispanohablantes, especialmente en las ciudades grandes como Ciudad de México, Buenos Aires y Bogotá, hay un gran problema con la contaminación del aire y el transporte. Sin embargo, en estos países también hay una fuerte tradición de vivir de manera más sencilla. Muchas personas usan el transporte público, como el autobús o el metro, porque es más barato y conveniente. También es común comprar comida fresca en mercados locales en lugar de ir al supermercado, lo que reduce el uso de plástico y empaques.</p>
+      <p>En los últimos años, muchos gobiernos latinoamericanos han hecho esfuerzos para proteger el medio ambiente. Por ejemplo, Costa Rica es famosa por su ecoturismo y sus políticas de conservación. Más del noventa por ciento de su electricidad viene de fuentes renovables como el agua, el viento y el sol. Este es un ejemplo muy inspirador para el resto del mundo.</p>
+      <p>En los Estados Unidos, el medio ambiente también es un tema importante, pero la cultura del automóvil hace que sea difícil reducir las emisiones de carbono. Muchas ciudades no tienen buen transporte público, y la gente depende mucho del coche para todo. Sin embargo, en los últimos años, más americanos están usando carros eléctricos, paneles solares y bolsas reutilizables.</p>
+      <p>En mi opinión, los dos países tienen mucho que aprender el uno del otro. Los países hispanohablantes pueden aprender de la tecnología verde americana, y los Estados Unidos pueden aprender del estilo de vida más sencillo y comunitario de Latinoamérica.</p>
+      <p>En conclusión, proteger el medio ambiente es responsabilidad de todos. No importa de qué país seamos, todos compartimos el mismo planeta y debemos cuidarlo juntos.</p>
+      <p><em>Muchas gracias.</em></p>
+      <hr class="modal-divider">
+      <div class="modal-meta-title">🔤 Key Vocabulary</div>
+      <table class="vocab-table">
+        <tr><th>Español</th><th>English</th></tr>
+        <tr><td>medio ambiente</td><td>environment</td></tr>
+        <tr><td>cambio climático</td><td>climate change</td></tr>
+        <tr><td>contaminación</td><td>pollution</td></tr>
+        <tr><td>transporte público</td><td>public transportation</td></tr>
+        <tr><td>fuentes renovables</td><td>renewable sources</td></tr>
+        <tr><td>ecoturismo</td><td>ecotourism</td></tr>
+        <tr><td>emisiones de carbono</td><td>carbon emissions</td></tr>
+        <tr><td>bolsas reutilizables</td><td>reusable bags</td></tr>
+      </table>
+      <hr class="modal-divider">
+      <div class="modal-meta-title">⏱ Timing Guide</div>
+      <table class="timing-table">
+        <tr><th>Section</th><th>Time</th></tr>
+        <tr><td>Intro</td><td>~15 sec</td></tr>
+        <tr><td>Challenges in Latin America</td><td>~30 sec</td></tr>
+        <tr><td>Costa Rica example</td><td>~20 sec</td></tr>
+        <tr><td>US comparison</td><td>~25 sec</td></tr>
+        <tr><td>Opinion + conclusion</td><td>~20 sec</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: La Tecnología -->
+<div class="modal-overlay" id="modal-tecnologia" onclick="closeOnOverlay(event, 'modal-tecnologia')">
+  <div class="modal">
+    <div class="modal-header">
+      <div>
+        <h2>💻 La Tecnología — WhatsApp vs. Redes Sociales en EE.UU.</h2>
+        <p>Task 4 · Cultural Comparison · Score 5 · ~2 min</p>
+      </div>
+      <button class="modal-close" onclick="closeModal('modal-tecnologia')">✕</button>
+    </div>
+    <div class="modal-body">
+      <p>Buenos días. Hoy quiero hablar sobre el uso de la tecnología entre los jóvenes en la cultura hispanohablante y cómo se compara con los Estados Unidos.</p>
+      <p>La tecnología es una parte muy importante de la vida moderna. Los teléfonos inteligentes, las redes sociales y las aplicaciones de mensajería han cambiado la manera en que las personas se comunican, estudian y se divierten. Sin embargo, la manera en que los jóvenes usan la tecnología puede variar según la cultura.</p>
+      <p>En los países hispanohablantes, WhatsApp es la aplicación de comunicación más popular. Las familias y los amigos usan WhatsApp para mandar mensajes, fotos y notas de voz todos los días. Es muy común que toda la familia tenga un grupo de WhatsApp donde comparten noticias, fotos y se organizan para reuniones. Esta aplicación ha reemplazado casi completamente las llamadas telefónicas y los mensajes de texto tradicionales.</p>
+      <p>Las redes sociales como Instagram y TikTok también son muy populares entre los jóvenes hispanohablantes. Muchos jóvenes siguen a influencers de sus propios países y crean contenido en español. Esto ha creado una cultura digital muy vibrante en español, con música, humor y tendencias propias.</p>
+      <p>En los Estados Unidos, la tecnología también es central en la vida de los jóvenes. Sin embargo, hay algunas diferencias. Por ejemplo, los jóvenes americanos usan más iMessage y Snapchat que WhatsApp. También hay un debate muy fuerte en los Estados Unidos sobre el efecto de las redes sociales en la salud mental de los jóvenes. Algunos estados ya han propuesto leyes para limitar el uso de redes sociales para menores de dieciséis años.</p>
+      <p>En mi opinión, la tecnología tiene ventajas y desventajas en las dos culturas. Por un lado, nos conecta con familia y amigos. Por otro lado, puede causar problemas de atención, ansiedad y falta de sueño. Creo que es importante usar la tecnología de manera responsable y mantener también las conexiones personales en la vida real.</p>
+      <p>En conclusión, aunque los jóvenes en las dos culturas usan la tecnología constantemente, las aplicaciones y los hábitos digitales son diferentes. Lo que sí tienen en común es que la tecnología ha cambiado para siempre la manera de comunicarse y relacionarse con el mundo.</p>
+      <p><em>Muchas gracias.</em></p>
+      <hr class="modal-divider">
+      <div class="modal-meta-title">🔤 Key Vocabulary</div>
+      <table class="vocab-table">
+        <tr><th>Español</th><th>English</th></tr>
+        <tr><td>redes sociales</td><td>social media</td></tr>
+        <tr><td>aplicaciones</td><td>apps</td></tr>
+        <tr><td>notas de voz</td><td>voice messages</td></tr>
+        <tr><td>contenido</td><td>content</td></tr>
+        <tr><td>menores</td><td>minors</td></tr>
+        <tr><td>ansiedad</td><td>anxiety</td></tr>
+        <tr><td>relacionarse</td><td>to connect / relate</td></tr>
+      </table>
+      <hr class="modal-divider">
+      <div class="modal-meta-title">⏱ Timing Guide</div>
+      <table class="timing-table">
+        <tr><th>Section</th><th>Time</th></tr>
+        <tr><td>Intro</td><td>~15 sec</td></tr>
+        <tr><td>WhatsApp culture in Latin America</td><td>~30 sec</td></tr>
+        <tr><td>Social media trends</td><td>~20 sec</td></tr>
+        <tr><td>US comparison + debate</td><td>~25 sec</td></tr>
+        <tr><td>Opinion + conclusion</td><td>~20 sec</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
 
 <footer>
   <span>AP Spanish Language &amp; Culture Study Repertoire · Built from <a href="https://apcentral.collegeboard.org/courses/ap-spanish-language-and-culture/exam/past-exam-questions" target="_blank">College Board AP Central</a></span>
@@ -657,6 +981,26 @@
 </footer>
 
 <script>
+function openModal(id) {
+  document.getElementById(id).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(id) {
+  document.getElementById(id).classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeOnOverlay(e, id) {
+  if (e.target === document.getElementById(id)) closeModal(id);
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.open').forEach(m => {
+      m.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  }
+});
+
 function filterCards(query) {
   const q = query.toLowerCase();
   document.querySelectorAll('.card').forEach(card => {
